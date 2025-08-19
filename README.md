@@ -1,4 +1,4 @@
-# Packet Sniffer (Wireshark-Lite)
+# Packet Sniffer
 
 This repository contains my custom-built packet sniffer project — a minimal version of Wireshark that I wrote from scratch.  
 It captures raw network packets, dissects Ethernet/IP/TCP/UDP headers, and can save captures to a standard `.pcap` file that opens in Wireshark.  
