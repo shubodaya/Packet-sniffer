@@ -86,7 +86,40 @@ ETH 40:3f:8c:85:2b:0a → ff:ff:ff:ff:ff:ff 0x8f83
 ETH 44:05:3f:80:f2:f4 → 00:0c:29:d7:7d:60 0x0806
 ETH 00:0c:29:d7:7d:60 → 44:05:3f:80:f2:f4 0x0806
 ```
-Open in Wireshark
+## Filtering Packets
+1. Capture only TCP packets
+```bash
+sudo python3 sniff.py -i eth0 --proto tcp
+```
+3. Capture only UDP packets
+```bash
+sudo python3 sniff.py -i eth0 --proto udp
+```
+4. Capture packets from a specific source IP
+```bash
+sudo python3 sniff.py -i eth0 --src 192.168.1.10
+```
+6. Capture packets to a specific destination IP
+```bash
+sudo python3 sniff.py -i eth0 --dst 8.8.8.8
+```
+8. Capture packets from a specific source port
+```bash
+sudo python3 sniff.py -i eth0 --sport 443
+```
+9. Capture packets to a specific destination port
+```bash
+sudo python3 sniff.py -i eth0 --dport 53
+```
+10. Combine filters (e.g., TCP packets from a specific IP to a specific port)
+```bash
+sudo python3 sniff.py -i eth0 --proto tcp --src 192.168.1.10 --dport 80
+```
+11. Limit number of packets captured (e.g., 10 packets)
+```bash
+sudo python3 sniff.py -i eth0 -n 10 --proto udp
+```
+## Open in Wireshark
 
 To confirm the capture:
 
@@ -95,7 +128,6 @@ Run the sniffer with the -w flag to write packets into capture.pcap.
 sudo python3 sniff.py -i eth0 -n 50 -w capture.pcap
 ```
 
-Open Wireshark:
 ```bash
 wireshark capture.pcap
 ```
